@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
+import { Vehicle } from "@/vehicle/entity/vehicle";
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     logging: true,
     entities: [
+        Vehicle
     ],
     subscribers: [],
     migrations: [],
