@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import vehicleRoutes from "@/vehicle/routes/vehicle.routes";
+import { errorHandler } from '@/middleware/error-handler.middleware';
 
 const app = express();
 
@@ -28,14 +29,6 @@ app.use((req, res) => {
   });
 });
 
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.error('Global error handler:', err);
-    res.status(500).json({
-        success: false,
-        message: 'Internal server error',
-        timestamp: new Date().toISOString(),
-        ...(process.env.NODE_ENV === 'development' && { error: err.message })
-    });
-});
+app.use(errorHandler);
 
 export default app;
