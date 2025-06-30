@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
-import { Vehicle } from "@/vehicle/entity/vehicle";
+import { Vehicle } from "@/vechicle/entity/vehicle";
 
 dotenv.config();
 
